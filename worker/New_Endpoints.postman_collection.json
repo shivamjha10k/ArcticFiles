@@ -1,0 +1,278 @@
+{
+  "info": {
+    "name": "Semantic Worker API - New Endpoints",
+    "description": "Collection for testing the new worker service endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Index Directory",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"path\": \"/path/to/your/directory\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/index-directory",
+          "host": ["{{base_url}}"],
+          "path": ["index-directory"]
+        }
+      },
+      "response": [
+        {
+          "name": "Successful Directory Indexing",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"path\": \"/Users/example/documents\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/index-directory",
+              "host": ["{{base_url}}"],
+              "path": ["index-directory"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"filesProcessed\": 123,\n  \"chunksIndexed\": 456,\n  \"totalFiles\": 150,\n  \"directory\": \"/Users/example/documents\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Index Single File",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"path\": \"/path/to/your/file.txt\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/index-file",
+          "host": ["{{base_url}}"],
+          "path": ["index-file"]
+        }
+      },
+      "response": [
+        {
+          "name": "Successful File Indexing",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"path\": \"/Users/example/document.pdf\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/index-file",
+              "host": ["{{base_url}}"],
+              "path": ["index-file"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"checksum\": \"abc123def456\",\n  \"size\": 1024,\n  \"chunksIndexed\": 5,\n  \"filePath\": \"/Users/example/document.pdf\",\n  \"fileName\": \"document.pdf\",\n  \"fileType\": \".pdf\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Reindex File",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"path\": \"/path/to/your/modified/file.txt\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/reindex-file",
+          "host": ["{{base_url}}"],
+          "path": ["reindex-file"]
+        }
+      },
+      "response": [
+        {
+          "name": "Successful File Reindexing",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"path\": \"/Users/example/document.pdf\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/reindex-file",
+              "host": ["{{base_url}}"],
+              "path": ["reindex-file"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"checksum\": \"def456ghi789\",\n  \"size\": 2048,\n  \"chunksIndexed\": 8,\n  \"filePath\": \"/Users/example/document.pdf\",\n  \"fileName\": \"document.pdf\",\n  \"fileType\": \".pdf\",\n  \"reindexed\": true\n}"
+        }
+      ]
+    },
+    {
+      "name": "Remove File from Index",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"path\": \"/path/to/file/to/remove.txt\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/remove-file",
+          "host": ["{{base_url}}"],
+          "path": ["remove-file"]
+        }
+      },
+      "response": [
+        {
+          "name": "Successful File Removal",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"path\": \"/Users/example/document.pdf\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/remove-file",
+              "host": ["{{base_url}}"],
+              "path": ["remove-file"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"chunksRemoved\": 5,\n  \"filePath\": \"/Users/example/document.pdf\",\n  \"fileName\": \"document.pdf\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Search Content",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"machine learning algorithms\",\n  \"top_k\": 5\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/search",
+          "host": ["{{base_url}}"],
+          "path": ["search"]
+        }
+      },
+      "response": [
+        {
+          "name": "Successful Search",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"machine learning algorithms\",\n  \"top_k\": 5\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/search",
+              "host": ["{{base_url}}"],
+              "path": ["search"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "cookie": [],
+          "body": "{\n  \"query\": \"machine learning algorithms\",\n  \"top_k\": 5,\n  \"results\": [\n    {\n      \"score\": 0.95,\n      \"file_path\": \"/path/to/document.pdf\",\n      \"file_name\": \"document.pdf\",\n      \"chunk\": \"Machine learning algorithms are...\",\n      \"chunk_index\": 0,\n      \"file_type\": \".pdf\",\n      \"file_size\": 1024,\n      \"chunk_size\": 256\n    }\n  ],\n  \"total_results\": 1\n}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8081",
+      "type": "string"
+    }
+  ]
+}

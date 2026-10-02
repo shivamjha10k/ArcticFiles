@@ -1,0 +1,214 @@
+{
+  "info": {
+    "name": "Semantic Worker API - Fixed",
+    "description": "Updated API collection for testing the Semantic Worker endpoints with proper model loading",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "health"
+          ]
+        },
+        "description": "Check if the API and model are loaded. Should show is_loaded: true and vector_size: 384"
+      },
+      "response": []
+    },
+    {
+      "name": "2. Root Endpoint",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            ""
+          ]
+        },
+        "description": "Basic health check endpoint"
+      },
+      "response": []
+    },
+    {
+      "name": "3. Index Sample Document",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"paths\": [\n    \"/Users/shivam/Desktop/arcticfiles/worker/sample_document.txt\"\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/index",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "index"
+          ]
+        },
+        "description": "Index the sample document. Should return files_indexed: 1, chunks_indexed > 0"
+      },
+      "response": []
+    },
+    {
+      "name": "4. Index Multiple Files",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"paths\": [\n    \"/Users/shivam/Desktop/arcticfiles/worker/sample_document.txt\",\n    \"/Users/shivam/Desktop/arcticfiles/worker/README.md\"\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/index",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "index"
+          ]
+        },
+        "description": "Index multiple files - update paths as needed for your documents"
+      },
+      "response": []
+    },
+    {
+      "name": "5. Search - Machine Learning",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"machine learning algorithms\",\n  \"top_k\": 5\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/search",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "search"
+          ]
+        },
+        "description": "Search for machine learning content"
+      },
+      "response": []
+    },
+    {
+      "name": "6. Search - Deep Learning",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"deep learning neural networks\",\n  \"top_k\": 3\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/search",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "search"
+          ]
+        },
+        "description": "Search for deep learning content"
+      },
+      "response": []
+    },
+    {
+      "name": "7. Search - Default Top K",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"artificial intelligence applications\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/search",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "search"
+          ]
+        },
+        "description": "Search without specifying top_k (uses default from config: 8)"
+      },
+      "response": []
+    },
+    {
+      "name": "8. Search - Reinforcement Learning",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"reinforcement learning robotics\",\n  \"top_k\": 2\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/search",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "search"
+          ]
+        },
+        "description": "Search for reinforcement learning content"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8081",
+      "type": "string"
+    }
+  ]
+}

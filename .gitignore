@@ -1,0 +1,96 @@
+# Dependencies
+node_modules/
+*/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Native binary files
+*.node
+*.o
+*.obj
+*.lib
+*.a
+*.so
+*.dylib
+
+# Electron specific
+frontend/node_modules/electron/dist/
+*.exe
+*.dll
+*.pak
+*.dat
+__pycache__/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+data/
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Build outputs
+dist/
+build/
+out/
+*.tgz
+*.tar.gz
+
+# Frontend specific
+frontend/build/
+frontend/dist/
+frontend/public/build/
+
+# Backend specific  
+backend/uploads/
+backend/logs/
+backend/.env
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+
+# Python cache files  
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+# Hackathon and Demo files
+DEMO_SCRIPT.md
+HACKATHON_PITCH_DECK.md
+hackathon_pitch.md

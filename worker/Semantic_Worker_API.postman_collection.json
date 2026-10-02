@@ -1,0 +1,113 @@
+{
+  "info": {
+    "name": "Semantic Worker API",
+    "description": "API collection for testing the Semantic Worker endpoints for document indexing and semantic search",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        },
+        "description": "Check if the API and model are loaded and healthy"
+      },
+      "response": []
+    },
+    {
+      "name": "Root Endpoint",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": ["{{base_url}}"],
+          "path": [""]
+        },
+        "description": "Basic health check endpoint"
+      },
+      "response": []
+    },
+    {
+      "name": "Index Files",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"paths\": [\n    \"/path/to/your/document1.txt\",\n    \"/path/to/your/document2.pdf\",\n    \"/path/to/your/document3.docx\"\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/index",
+          "host": ["{{base_url}}"],
+          "path": ["index"]
+        },
+        "description": "Index multiple files by parsing, chunking, embedding, and storing in Qdrant"
+      },
+      "response": []
+    },
+    {
+      "name": "Semantic Search",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"machine learning algorithms\",\n  \"top_k\": 5\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/search",
+          "host": ["{{base_url}}"],
+          "path": ["search"]
+        },
+        "description": "Perform semantic search using query embedding and Qdrant vector search"
+      },
+      "response": []
+    },
+    {
+      "name": "Search with Default Top K",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"query\": \"artificial intelligence\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/search",
+          "host": ["{{base_url}}"],
+          "path": ["search"]
+        },
+        "description": "Perform semantic search without specifying top_k (uses default from config)"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8081",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta
+    name="description"
+    content="ArcticFiles 2.0 - AI-powered desktop file search with semantic understanding"
+  />
+  <title>ArcticFiles 2.0</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'mono': ['JetBrains Mono', 'monospace']
+          },
+          colors: {
+            'neon': {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e'
+            },
+            'electric': {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              400: '#94a3b8',
+              500: '#64748b',
+              600: '#475569',
+              700: '#334155',
+              800: '#1e293b',
+              900: '#0f172a'
+            },
+            'cyber': {
+              50: '#fdf4ff',
+              100: '#fae8ff',
+              200: '#f5d0fe',
+              300: '#f0abfc',
+              400: '#e879f9',
+              500: '#d946ef',
+              600: '#c026d3',
+              700: '#a21caf',
+              800: '#86198f',
+              900: '#701a75'
+            }
+          },
+          animation: {
+            'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+            'fade-in': 'fade-in 0.3s ease-in-out',
+            'neon-pulse': 'neon-pulse 2s ease-in-out infinite',
+            'float': 'float 3s ease-in-out infinite',
+          },
+          keyframes: {
+            'pulse-glow': {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(217, 70, 239, 0.6), 0 0 40px rgba(14, 165, 233, 0.4)' },
+              '50%': { boxShadow: '0 0 30px rgba(217, 70, 239, 0.8), 0 0 60px rgba(14, 165, 233, 0.6)' }
+            },
+            'neon-pulse': {
+              '0%, 100%': { boxShadow: '0 0 5px rgba(14, 165, 233, 0.5), inset 0 0 5px rgba(217, 70, 239, 0.2)' },
+              '50%': { boxShadow: '0 0 20px rgba(14, 165, 233, 0.8), inset 0 0 10px rgba(217, 70, 239, 0.4)' }
+            },
+            'float': {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' }
+            },
+            'fade-in': {
+              '0%': { opacity: '0', transform: 'translateY(10px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Prevent flash of unstyled content */
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.3s ease;
+    }
+    
+    body.light {
+      background-color: #ffffff;
+    }
+    
+    body.dark {
+      background-color: #0f172a;
+    }
+    
+    #root {
+      height: 100vh;
+    }
+    
+    /* Loading animation */
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      transition: background-color 0.3s ease;
+    }
+    
+    body.light .loading {
+      background-color: #ffffff;
+      color: #1e293b;
+    }
+    
+    body.dark .loading {
+      background-color: #0f172a;
+      color: #f1f5f9;
+    }
+  </style>
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+    <div class="loading">
+      <div>Loading ArcticFiles...</div>
+    </div>
+  </div>
+  <script>
+    // Initialize theme on page load
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.add('light');
+    }
+  </script>
+</body>
+</html>

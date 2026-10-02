@@ -1,0 +1,56 @@
+{
+  "name": "arcticfiles-frontend",
+  "version": "0.2.0",
+  "private": true,
+  "homepage": ".",
+  "main": "public/electron.js",
+  "description": "ArcticFiles with AI-powered search",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "electron-dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "build-electron": "npm run build && electron-builder",
+    "start:all": "concurrently \"npm run start:backend\" \"npm run start:worker\" \"npm run start:frontend\"",
+    "start:backend": "cd ../backend && npm start",
+    "start:worker": "cd ../worker && python app.py",
+    "start:frontend": "npm start"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "lucide-react": "^0.263.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^8.2.0",
+    "electron": "^25.2.0",
+    "electron-builder": "^24.4.0",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "wait-on": "^7.0.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
